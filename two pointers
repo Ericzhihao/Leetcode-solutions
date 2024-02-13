@@ -1,0 +1,27 @@
+//143 reorder linkedlist
+public void reorderList(ListNode head) {
+        if (head == null) {
+            return;
+        }
+        ArrayList<ListNode> list = new ArrayList<ListNode>(); // 创建线性表
+        // 将链表中的元素传入线性表中
+        while (head != null) {
+            list.add(head);
+            head = head.next;
+        }
+        // 设定双指针指向线性表的头尾
+        int i = 0;
+        int j = list.size() - 1;
+        // 在线性表中进行遍历
+        while (i < j) {
+            list.get(i).next = list.get(j);
+            i++;
+            if (i == j) {
+                break;
+            }
+            list.get(j).next = list.get(i);
+            j--;
+        }
+        // 最后一个指针指向null
+        list.get(i).next = null;
+    }
